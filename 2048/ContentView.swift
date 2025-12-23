@@ -44,7 +44,9 @@ struct ContentView: View {
             
             VStack {
                 // Header
-                NavigationHeader("2048") {
+                NavigationHeader("2048", onDismiss: {
+                    withAnimation { gameState = .menu }
+                }) {
                     Button(action: {
                         withAnimation { showSettings = true }
                     }) {

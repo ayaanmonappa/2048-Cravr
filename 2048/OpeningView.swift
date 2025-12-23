@@ -11,6 +11,8 @@ struct OpeningView: View {
         ZStack {
             StarBackground()
             
+            FloatingTilesBackground()
+            
             VStack(spacing: 40) {
                 Spacer()
                 
