@@ -35,7 +35,7 @@ struct NavigationHeader<Content: View>: View {
                 
                 Text(title)
                     .font(AppFont.rounded(20, weight: .bold))
-                    .foregroundColor(.white)
+                    .foregroundColor(BlockBlastConstants.cravrMaize)
                 
                 Spacer()
                 

@@ -29,31 +29,18 @@ extension Color {
 }
 
 struct AppColors {
-    static let primaryGreen = Color(hex: "1C9D1F")
-    static let darkGreenBg = Color(hex: "032205") // Guessing a dark green based on "StarBackground" context
-    static let gradientStart = Color(hex: "FED544") // Yellowish
-    static let gradientEnd = Color(hex: "00BC09")   // Greener
+    static let primaryGreen = BlockBlastConstants.cravrGreen
+    static let darkGreenBg = BlockBlastConstants.cravrDarkSurface
+    static let gradientStart = BlockBlastConstants.cravrMaize
+    static let gradientEnd = BlockBlastConstants.cravrPumpkin
     
     // Tile Colors
     static func tileColor(for value: Int) -> Color {
-        switch value {
-        case 2: return Color(hex: "EEE4DA")
-        case 4: return Color(hex: "EDE0C8")
-        case 8: return Color(hex: "F2B179")
-        case 16: return Color(hex: "F59563")
-        case 32: return Color(hex: "F67C5F")
-        case 64: return Color(hex: "F65E3B")
-        case 128: return Color(hex: "EDCF72")
-        case 256: return Color(hex: "EDCC61")
-        case 512: return Color(hex: "EDC850")
-        case 1024: return Color(hex: "EDC53F")
-        case 2048: return Color(hex: "EDC22E")
-        default: return Color(hex: "3C3A32")
-        }
+        return BlockBlastConstants.tileColor(for: value)
     }
     
     static func tileTextColor(for value: Int) -> Color {
-        return value > 4 ? .white : Color(hex: "776E65")
+        return .white
     }
 }
 

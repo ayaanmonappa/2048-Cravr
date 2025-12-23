@@ -11,7 +11,7 @@ struct CardView<Content: View>: View {
         ZStack {
             // Darker background with opacity
             RoundedRectangle(cornerRadius: 24, style: .continuous)
-                .fill(Color(hex: "062C09").opacity(0.8)) // Dark green tint
+                .fill(BlockBlastConstants.cravrDarkSurface)
                 
             // Stroke
             RoundedRectangle(cornerRadius: 24, style: .continuous)
