@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @ObservedObject var game: GameModel
     @ObservedObject var audioManager = AudioHapticsManager.shared
     @Binding var isPresented: Bool
     
@@ -60,6 +61,49 @@ struct SettingsView: View {
                         )
                     }
                 }
+                
+                #if DEBUG
+                Divider()
+                    .background(Color.white.opacity(0.2))
+                
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("DEBUG TOOLS")
+                        .font(AppFont.rounded(14, weight: .bold))
+                        .foregroundColor(.white.opacity(0.6))
+                    
+                    HStack(spacing: 12) {
+                        Button(action: {
+                            withAnimation {
+                                game.debugSetup()
+                                isPresented = false
+                            }
+                        }) {
+                            Text("Near End")
+                                .font(AppFont.rounded(14, weight: .bold))
+                                .foregroundColor(.white)
+                                .padding(12)
+                                .frame(maxWidth: .infinity)
+                                .background(Color.red.opacity(0.6))
+                                .cornerRadius(12)
+                        }
+                        
+                        Button(action: {
+                            withAnimation {
+                                game.debugWinSetup()
+                                isPresented = false
+                            }
+                        }) {
+                            Text("Near Win")
+                                .font(AppFont.rounded(14, weight: .bold))
+                                .foregroundColor(.white)
+                                .padding(12)
+                                .frame(maxWidth: .infinity)
+                                .background(Color.green.opacity(0.6))
+                                .cornerRadius(12)
+                        }
+                    }
+                }
+                #endif
             }
             .padding(30)
             .background(
@@ -122,5 +166,5 @@ struct TrackButton: View {
 }
 
 #Preview {
-    SettingsView(isPresented: .constant(true))
+    SettingsView(game: GameModel(), isPresented: .constant(true))
 }

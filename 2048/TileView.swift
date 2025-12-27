@@ -55,6 +55,8 @@ struct TileView: View {
                         .font(AppFont.rounded(fontSize(for: value), weight: .black))
                         .foregroundColor(AppColors.tileTextColor(for: value))
                         .shadow(color: .black.opacity(0.2), radius: 1, x: 0, y: 1)
+                        .minimumScaleFactor(0.4)
+                        .lineLimit(1)
                 }
                 
                 // Flash Overlay
@@ -120,10 +122,11 @@ struct TileView: View {
     // Dynamic font size for larger numbers
     private func fontSize(for value: Int) -> CGFloat {
         switch value {
-        case 0...99: return 32
-        case 100...999: return 26
-        case 1000...9999: return 20
-        default: return 16
+        case 0...9: return 42
+        case 10...99: return 38
+        case 100...999: return 30
+        case 1000...9999: return 24
+        default: return 20
         }
     }
 }

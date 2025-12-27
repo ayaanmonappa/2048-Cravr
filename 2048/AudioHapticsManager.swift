@@ -92,7 +92,9 @@ class AudioHapticsManager: ObservableObject {
             player.play()
             audioPlayers[name] = player
         } catch {
+            #if DEBUG
             print("Failed to play sound: \(error)")
+            #endif
         }
     }
     
@@ -115,7 +117,9 @@ class AudioHapticsManager: ObservableObject {
             bgMusicPlayer?.prepareToPlay()
             bgMusicPlayer?.play()
         } catch {
+            #if DEBUG
             print("Failed to play background music: \(error)")
+            #endif
         }
     }
     

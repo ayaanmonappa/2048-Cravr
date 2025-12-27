@@ -26,7 +26,7 @@ struct ContentView: View {
             
             // Settings Overlay
             if showSettings {
-                SettingsView(isPresented: $showSettings)
+                SettingsView(game: game, isPresented: $showSettings)
                     .transition(.opacity)
                     .zIndex(100)
             }
@@ -114,6 +114,8 @@ struct ContentView: View {
                                 }
                         )
                     
+                    Spacer() // Push content to use vertical space
+                    
                     // Controls / New Game
                     Button(action: {
                         withAnimation {
@@ -121,8 +123,8 @@ struct ContentView: View {
                         }
                     }) {
                         Text("New Game")
-                            .font(AppFont.rounded(22, weight: .bold)) // Increased size
-                            .foregroundColor(.black) // Black text on bright button
+                            .font(AppFont.rounded(22, weight: .bold))
+                            .foregroundColor(.black)
                             .padding()
                             .frame(maxWidth: .infinity)
                             .background(
@@ -138,37 +140,6 @@ struct ContentView: View {
                             )
                     }
                     .padding(.horizontal, 20)
-                    
-                    // Debug Button
-                    Button(action: {
-                        withAnimation {
-                            game.debugSetup()
-                        }
-                    }) {
-                        Text("Debug: Near End Game")
-                            .font(AppFont.rounded(14, weight: .bold))
-                            .foregroundColor(.white.opacity(0.8))
-                            .padding(8)
-                            .background(Color.black.opacity(0.3))
-                            .cornerRadius(8)
-                    }
-                    .padding(.top, 8)
-                    
-                    // Debug Button: Win
-                    Button(action: {
-                        withAnimation {
-                            game.debugWinSetup()
-                        }
-                    }) {
-                        Text("Debug: Near Win")
-                            .font(AppFont.rounded(14, weight: .bold))
-                            .foregroundColor(.white.opacity(0.8))
-                            .padding(8)
-                            .background(Color.black.opacity(0.3))
-                            .cornerRadius(8)
-                    }
-                    
-                    Spacer() // Add spacer at bottom to push content up if needed
                 }
                 .padding(.bottom, 20)
             }
